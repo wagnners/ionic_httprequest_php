@@ -1,5 +1,7 @@
 {
   "name": "ProjetoHttpRequest",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

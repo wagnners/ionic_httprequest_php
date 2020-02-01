@@ -1,14 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title class="item-text-wrap">
+      HTTP REQUEST - OMDb API
     </ion-title>
+   
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-searchbar [(ngModel)]="procura" (search)="getResultados()"></ion-searchbar>
+  <div class="resultado vazio" *ngIf="estaVazio">Sem resultados</div>
+  <div class="resultado com_resultado" *ngIf="mostrarTotal">Resultados: {{total}}</div>
+
+  <ion-list>
+    <ion-item *ngFor="let filme of filmes" (click)="abrirDetalhes(filme)">
+      <div class="item-content">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+                <h2>{{filme.Title}}</h2>
+            </ion-col>
+            <ion-col class="detalhes">
+              <ion-row>
+                Ano
+              </ion-row>
+              <ion-row>
+                <h5>{{filme.Year}}</h5>
+              </ion-row>       
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>

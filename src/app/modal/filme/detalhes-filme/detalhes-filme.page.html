@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>Detalhes</ion-title>
+      <ion-buttons slot="end">
+          <ion-button ion-button color="header" (click)="fecharModal()">
+              <ion-icon name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img [src]="filme.Poster"></ion-img>
+  <div class="ion-text-center">
+    <h2>{{filme.Title}}</h2>
+    <h2>{{filme.Year}}</h2>
+  </div>
+  <ion-button color="success" expand="full" (click)="salvarFilme(filme)"><ion-icon name="heart"></ion-icon></ion-button>
+</ion-content>
