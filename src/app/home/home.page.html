@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  <ion-button expand="full" color="primary" (click)="abrirListaFilmes()">Listar Filmes</ion-button>
   <ion-searchbar [(ngModel)]="procura" (search)="getResultados()"></ion-searchbar>
   <div class="resultado vazio" *ngIf="estaVazio">Sem resultados</div>
   <div class="resultado com_resultado" *ngIf="mostrarTotal">Resultados: {{total}}</div>

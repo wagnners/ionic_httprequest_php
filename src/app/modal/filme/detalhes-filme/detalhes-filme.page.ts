@@ -29,7 +29,7 @@ export class DetalhesFilmePage implements OnInit {
     this.post.ano = filme.Year;
     this.post.funcao = "inserirFilme";
 
-    let status = this.servico.getDataPost("salvar.php", this.post).subscribe(
+    let status = this.servico.getDataPost("index.php", this.post).subscribe(
       (result) => {
 
       }, (err) => {
