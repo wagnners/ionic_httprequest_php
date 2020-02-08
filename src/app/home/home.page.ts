@@ -29,8 +29,6 @@ export class HomePage {
     if(this.procura != ""){
 
       this.movieRequest.conectarAPI(this.procura, "movie").subscribe((results) => {
-        
-        console.log(results);
 
         if(results.Response == "True"){
          
