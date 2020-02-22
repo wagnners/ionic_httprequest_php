@@ -12,7 +12,7 @@ export class ListaFilmesPage implements OnInit {
   post  : any = {};
   filmes: Array<any> = [];
 
-  constructor(private servico : ConnectionBaseService, private router: Router) { }
+  constructor(private servico : ConnectionBaseService) { }
 
   ngOnInit() {
 
@@ -34,9 +34,4 @@ export class ListaFilmesPage implements OnInit {
         console.log("Erro na requisição http");
     });
   }
-
-  back(){
-    this.router.navigate(['home']);  
-  }
-
 }

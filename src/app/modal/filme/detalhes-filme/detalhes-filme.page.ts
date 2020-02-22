@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ModalController } from '@ionic/angular';
+import { NavParams, ModalController, AlertController } from '@ionic/angular';
 import { ConnectionBaseService } from 'src/app/connection-base.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class DetalhesFilmePage implements OnInit {
   post  : any = {};
   filme : Object = {};
   
-  constructor(private nav : NavParams, private modal: ModalController, private servico : ConnectionBaseService) { }
+  constructor(private nav : NavParams, private modal: ModalController, private servico : ConnectionBaseService,public alertController: AlertController) { }
 
   ngOnInit() {
     this.filme = this.nav.get('data');
@@ -32,10 +32,27 @@ export class DetalhesFilmePage implements OnInit {
     let status = this.servico.getDataPost("index.php", this.post).subscribe(
       (result) => {
 
+        if(result.sucess){
+          this.presentAlert("Filme salvo com sucesso.");
+        }else{
+          this.presentAlert("Erro ao salvar filme.");
+        }
+
       }, (err) => {
-        console.log("Erro na requisição http");
+        this.presentAlert("Erro com a conexão de dados.");
     });
 
+  }
+
+  async presentAlert(msg) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: msg,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }
